@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>پاتوق صوتی | ویس و اسکرین‌شیر با رفقا</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+<script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+</head>
+<body>
+<div class="bg"></div>
+<div class="container">
+<header class="head">
+<h1>پاتوق صوتی</h1>
+<p>لینک بده، بیاید تو یه اتاق ویس حرف بزنید و اسکرین شیر کنید</p>
+<div class="status"><span id="statusDot" class="dot off"></span><span id="statusText">قطع است</span></div>
+</header>
+
+<section id="joinScreen" class="card">
+<h2>ورود به اتاق صوتی</h2>
+<label>اسمت چیه؟</label>
+<input id="nameInput" placeholder="مثلاً امیر" maxlength="20">
+<label>کد اتاق</label>
+<div class="row">
+<input id="roomInput" placeholder="مثلاً KX7P2M" maxlength="10">
+<button id="randomBtn" class="ghost" type="button">تصادفی</button>
+</div>
+<button id="joinBtn" class="primary">ورود با میکروفون</button>
+<p class="hint">اگه می‌خوای اتاق بسازی فقط اسمت رو بنویس و تصادفی و ورود رو بزن. اگه لینک داری فقط اسمت رو بنویس و ورود بزن. حتماً با لینک https و کروم باز کن و دسترسی میکروفون رو بده.</p>
+</section>
+
+<section id="roomScreen" class="card hidden">
+<div class="room-top">
+<div>
+<div class="room-line">کد اتاق: <b id="roomCode">----</b></div>
+<div class="online-line"><span id="onlineCount">۱</span> نفر آنلاین‌اند</div>
+</div>
+<div class="top-btns">
+<button id="copyLinkBtn" class="ghost" type="button">کپی لینک دعوت</button>
+<button id="leaveBtn" class="danger" type="button">خروج</button>
+</div>
+</div>
+
+<div class="controls">
+<button id="micBtn" class="ctrl on" type="button">🎙️ میکروفون روشن</button>
+<button id="screenBtn" class="ctrl" type="button">🖥️ شیر اسکرین</button>
+</div>
+
+<div class="room-body">
+<aside class="users">
+<h3>بچه‌های اتاق</h3>
+<ul id="usersList"></ul>
+<p class="hint">سبز یعنی وصل و صدا میاد. اگه صدای کسی نمیاد یه بار رفرش کن و دوباره بیا تو.</p>
+</aside>
+<main class="stage">
+<h3>اسکرین‌ها</h3>
+<div id="screensGrid" class="screens">
+<div id="noScreen" class="empty">هنوز کسی اسکرین شیر نکرده. دکمه «شیر اسکرین» رو بزن تا همه ببینن.</div>
+</div>
+<div id="audios" style="display:none"></div>
+</main>
+</div>
+</section>
+<p class="foot">صدا و تصویر مستقیم بین خودتون ردوبدل می‌شه و جایی ذخیره نمی‌شه</p>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
